@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimoni – Kreativa Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Kreativa Studio</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="testimoni.html">Testimoni</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
+</header>
+
+<section id="testimoni" class="testimoni-slider-section">
+
+    <h2>Testimoni Pelanggan</h2>
+    <p class="subtitle">Apa kata mereka tentang Kreativa Studio?</p>
+
+    <div class="slider-container">
+
+        <div class="slider-wrapper" id="sliderWrapper">
+
+            <div class="slide">
+                <p class="quote">"Hasil luar biasa! Desain sangat profesional."</p>
+                <h4>- Amanda</h4>
+            </div>
+
+            <div class="slide">
+                <p class="quote">"Cepat, rapi, dan sesuai request!"</p>
+                <h4>- Kevin</h4>
+            </div>
+
+            <div class="slide">
+                <p class="quote">"Pelayanan ramah dan kualitas terbaik."</p>
+                <h4>- Sarah</h4>
+            </div>
+
+        </div>
+
+        <!-- Tombol Navigasi -->
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+
+        <!-- DOTS INDICATOR -->
+        <div class="testi-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2025 Kreativa Studio</p>
+</footer>
+
+<script>
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+const wrapper = document.querySelector(".slider-wrapper");
+const dots = document.querySelectorAll(".dot");
+
+// Fungsi geser slider
+function showSlide(i) {
+    index = (i + slides.length) % slides.length;
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+
+    // Update active dot
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+}
+
+// Tombol navigasi
+document.querySelector(".next").onclick = () => showSlide(index + 1);
+document.querySelector(".prev").onclick = () => showSlide(index - 1);
+
+// Klik dots
+dots.forEach((dot, i) => {
+    dot.onclick = () => showSlide(i);
+});
+
+// Auto Slide
+setInterval(() => {
+    showSlide(index + 1);
+}, 4000);
+</script>
+
+</body>
+</html>
